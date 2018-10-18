@@ -7,11 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/Enviar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Enviar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Endrevina" />
+
+        <Button
+            android:id="@+id/Records"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sendMessage"
+            android:text="Taula de Records" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/Num_Usuario"
