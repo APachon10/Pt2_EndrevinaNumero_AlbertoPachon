@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 dialog.show();
             }
-        }
+        });
     }
     public void sendMessage(View view) {
         Intent intent = new Intent(this, TablaRecords.class);
