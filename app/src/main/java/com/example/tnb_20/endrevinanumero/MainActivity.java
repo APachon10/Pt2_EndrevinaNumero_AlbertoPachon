@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
 
-                        EditText edit=(EditText)dialog.findViewById(R.id.user_name);
+                        EditText edit=dialog.findViewById(R.id.user_name);
                         String text=edit.getText().toString();
 
                         dialog.dismiss();
