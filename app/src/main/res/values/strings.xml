@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EndrevinaNumero</string>
+    <string name="pon_el_nombre_de_usuario">Pon el nombre de Usuario</string>
+    <string name="enviar">Enviar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="name">Name</string>
 </resources>
