@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
 
+                    intentos = intentos+intentos;
+
                     final Dialog dialog = new Dialog(MainActivity.this);
                     dialog.setContentView(R.layout.dialog);
                     dialog.setTitle("Title");
@@ -58,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
                             dialog.dismiss();
                             name=text;
+
+                            Intent intent = new Intent(MainActivity.this, TablaRecords.class);
+                            EditText editText = dialog.findViewById(R.id.button_ok);
+                            String message = editText.getText().toString();
+                            intent.putExtra("MSG1", message);
+                            startActivity(intent);
                         }
                     });
                     dialog.show();
@@ -67,8 +75,11 @@ public class MainActivity extends AppCompatActivity {
                         CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Grande ";
                         int duration = Toast.LENGTH_SHORT;
 
+
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+
+                        EditText et = findViewById(R.id.Num_Usuario);
                     }else {
                         Context context = getApplicationContext();
                         CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Pequeño";
@@ -81,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         final Button record = findViewById(R.id.Records);
         record.setOnClickListener(new View.OnClickListener() {
             @Override
