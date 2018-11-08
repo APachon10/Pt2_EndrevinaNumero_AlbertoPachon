@@ -44,10 +44,27 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+
+                    final Dialog dialog = new Dialog(MainActivity.this);
+                    dialog.setContentView(R.layout.dialog);
+                    dialog.setTitle("Title");
+
+                    Button button = dialog.findViewById(R.id.button_ok);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+
+                            EditText edit=dialog.findViewById(R.id.user_name);
+                            String text=edit.getText().toString();
+
+                            dialog.dismiss();
+                            name=text;
+                        }
+                    });
+                    dialog.show();
                 }else{
                     if(valorAleatorio > valor){
                         Context context = getApplicationContext();
-                        CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Grande "+Integer.toString(valorAleatorio);
+                        CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Grande ";
                         int duration = Toast.LENGTH_SHORT;
 
                         Toast toast = Toast.makeText(context, text, duration);
@@ -69,30 +86,12 @@ public class MainActivity extends AppCompatActivity {
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(MainActivity.this);
-                dialog.setContentView(R.layout.dialog);
-                dialog.setTitle("Title");
-
-                Button button = dialog.findViewById(R.id.button_ok);
-                button.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-
-                        EditText edit=dialog.findViewById(R.id.user_name);
-                        String text=edit.getText().toString();
-
-                        dialog.dismiss();
-                        name=text;
-                    }
-                });
-                dialog.show();
+                Intent intent = new Intent(MainActivity.this, TablaRecords.class);
+                EditText editText = findViewById(R.id.Num_Usuario);
+                String message = editText.getText().toString();
+                intent.putExtra("MSG1", message);
+                startActivity(intent);
             }
         });
-    }
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, TablaRecords.class);
-        EditText editText = findViewById(R.id.Num_Usuario);
-        String message = editText.getText().toString();
-        intent.putExtra("MSG1", message);
-        startActivity(intent);
     }
 }

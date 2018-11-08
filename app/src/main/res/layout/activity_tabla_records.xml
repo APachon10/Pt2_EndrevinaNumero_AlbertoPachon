@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".TablaRecords">
 
+    <ListView
+        android:layout_width="385dp"
+        android:layout_height="570dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="25dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="5dp" />
 </android.support.constraint.ConstraintLayout>
