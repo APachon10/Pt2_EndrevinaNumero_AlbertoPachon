@@ -11,17 +11,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     protected int valorAleatorio;
     protected int intentos;
     protected String name;
+
+    protected ArrayList<String> records2 ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        records2 = new ArrayList<>();
         intentos = 0;
         /*Generamos Numero Aleatorio */
         Random r = new Random();
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 int valor = Integer.parseInt(s);
                 if(valorAleatorio == valor){
                     Context context = getApplicationContext();
-                    CharSequence text = "You Win ";
+                    CharSequence text = "You Win "+intentos;
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
@@ -61,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                             name=text;
 
+                            records2.add(name);
+
+
                             Intent intent = new Intent(MainActivity.this, TablaRecords.class);
                             EditText editText = dialog.findViewById(R.id.button_ok);
                             String message = editText.getText().toString();
@@ -68,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
                     dialog.show();
                 }else{
                     if(valorAleatorio > valor){
@@ -78,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
-
-                        EditText et = findViewById(R.id.Num_Usuario);
                     }else {
                         Context context = getApplicationContext();
                         CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Pequeño";
@@ -92,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        
         final Button record = findViewById(R.id.Records);
         record.setOnClickListener(new View.OnClickListener() {
             @Override
