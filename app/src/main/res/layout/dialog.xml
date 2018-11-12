@@ -30,13 +30,13 @@
 
         <Button
             android:id="@+id/button_ok"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/enviar" />
 
         <Button
             android:id="@+id/button_cancel"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cancelar" />
     </LinearLayout>
