@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 int valor = Integer.parseInt(s);
                 if(valorAleatorio == valor){
                     Context context = getApplicationContext();
-                    CharSequence text = "You Win "+intentos;
+                    CharSequence text = "You Win ";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.setContentView(R.layout.dialog);
                     dialog.setTitle("Title");
 
-                    Button button = dialog.findViewById(R.id.button_ok);
+                    final Button button = dialog.findViewById(R.id.button_ok);
                     button.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View v) {
 
@@ -65,14 +65,15 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                             name=text;
 
-                            records2.add(name);
-
 
                             Intent intent = new Intent(MainActivity.this, TablaRecords.class);
                             EditText editText = dialog.findViewById(R.id.button_ok);
                             String message = editText.getText().toString();
                             intent.putExtra("MSG1", message);
+
                             startActivity(intent);
+
+
                         }
                     });
 
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        
         final Button record = findViewById(R.id.Records);
         record.setOnClickListener(new View.OnClickListener() {
             @Override
