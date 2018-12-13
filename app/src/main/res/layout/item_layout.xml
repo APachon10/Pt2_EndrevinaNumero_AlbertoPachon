@@ -5,14 +5,14 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/User"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Rec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
