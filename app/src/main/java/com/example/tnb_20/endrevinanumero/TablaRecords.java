@@ -14,28 +14,16 @@ public class TablaRecords extends AppCompatActivity {
     public int intentos;
     public String name;
 
-
-    class Record {
-        public Record(int _intents, String _nom) {
-
-            intentos = _intents;
-            name = getIntent().getStringExtra("name");
-        }
-    }
-    ArrayList<Record> records;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_records);
 
-
-        // Inicialitzem model
-        records = new ArrayList<Record>();
-
         // busquem la ListView i li endollem el ArrayAdapter
-        TextView lv = (TextView) findViewById(R.id.tabla);
-        lv.setText(name + "-" +intentos);
+        TextView lv = findViewById(R.id.tabla);
+        for (int i=0;i<MainActivity.records2.size();i++){
+            lv.setText(lv.getText()+MainActivity.records2.get(i).name + "-" +MainActivity.records2.get(i).intentos+"\n");
+        }
         }
 
 

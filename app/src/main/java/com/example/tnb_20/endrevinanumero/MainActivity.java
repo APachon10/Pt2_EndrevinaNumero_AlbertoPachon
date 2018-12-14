@@ -19,13 +19,13 @@ public class MainActivity extends AppCompatActivity {
     protected int intentos;
     protected String name;
 
-    protected ArrayList<String> records2 ;
+    public static ArrayList<Record> records2 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        records2 = new ArrayList<>();
+        records2 = new ArrayList<Record>();
         intentos = 0;
         /*Generamos Numero Aleatorio */
         Random r = new Random();
@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
                     intentos = intentos+intentos;
 
-
-
                     final Dialog dialog = new Dialog(MainActivity.this);
                     dialog.setContentView(R.layout.dialog);
                     dialog.setTitle("Title");
@@ -71,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                             EditText editText = dialog.findViewById(R.id.user_name);
                             String message = editText.getText().toString();
 
+                            System.out.println("AAAAAAAAAAAAAA--> "+message);
+
+
+
                             Context context2 = getApplicationContext();
                             CharSequence text2 = "NOMBRE "+message+" - "+"Intentos "+intentos;
                             int duration2= Toast.LENGTH_SHORT;
@@ -78,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
                             Toast toast = Toast.makeText(context2, text2, duration2);
                             toast.show();
 
-                            intent.putExtra("name", message);
-                            intent.putExtra("intentos",intentos);
+                            records2.add(new Record(intentos,message));
+                           // intent.putExtra("name", message);
+                            //intent.putExtra("intentos",intentos);
 
                             startActivity(intent);
 
