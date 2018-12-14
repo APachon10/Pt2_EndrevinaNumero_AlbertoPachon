@@ -67,18 +67,19 @@ public class MainActivity extends AppCompatActivity {
                             dialog.dismiss();
                             name=text;
 
-                            Context context2 = getApplicationContext();
-                            CharSequence text2 = "intentos" + intentos + "Nombre:"+name;
-                            int duration2 = Toast.LENGTH_SHORT;
-
-                            Toast toast2 = Toast.makeText(context2, text2, duration2);
-                            toast2.show();
-
                             Intent intent = new Intent(MainActivity.this, TablaRecords.class);
                             EditText editText = dialog.findViewById(R.id.user_name);
                             String message = editText.getText().toString();
-                            intent.putExtra("MSG1", message);
-                            intent.putExtra("Name"+name,"Intentos"+intentos);
+
+                            Context context2 = getApplicationContext();
+                            CharSequence text2 = "NOMBRE "+message+" - "+"Intentos "+intentos;
+                            int duration2= Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context2, text2, duration2);
+                            toast.show();
+
+                            intent.putExtra("name", message);
+                            intent.putExtra("intentos",intentos);
 
                             startActivity(intent);
 

@@ -1,5 +1,6 @@
 package com.example.tnb_20.endrevinanumero;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,10 +14,12 @@ public class TablaRecords extends AppCompatActivity {
     public int intentos;
     public String name;
 
+
     class Record {
         public Record(int _intents, String _nom) {
+
             intentos = _intents;
-            name = _nom;
+            name = getIntent().getStringExtra("name");
         }
     }
     ArrayList<Record> records;
@@ -26,12 +29,13 @@ public class TablaRecords extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_records);
 
+
         // Inicialitzem model
         records = new ArrayList<Record>();
 
         // busquem la ListView i li endollem el ArrayAdapter
         TextView lv = (TextView) findViewById(R.id.tabla);
-        lv.setText(name + " " +intentos);
+        lv.setText(name + "-" +intentos);
         }
 
 
