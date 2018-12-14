@@ -28,7 +28,7 @@ public class TablaRecords extends AppCompatActivity {
 
         // Inicialitzem model
         records = new ArrayList<Record>();
-        
+
         // busquem la ListView i li endollem el ArrayAdapter
         TextView lv = (TextView) findViewById(R.id.tabla);
         lv.setText(name + " " +intentos);
