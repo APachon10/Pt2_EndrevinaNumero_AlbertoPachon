@@ -1,6 +1,7 @@
 package com.example.tnb_20.endrevinanumero;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,8 @@ public class TablaRecords extends AppCompatActivity {
             lv.setText(lv.getText()+MainActivity.records2.get(i).name + "-" +MainActivity.records2.get(i).intentos+"\n");
         }
     }
-
-
+    public void onBackPressed() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
+}
