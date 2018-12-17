@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected int valorAleatorio;
     protected int intentos;
     protected String name;
+    protected boolean salir=false;
 
     public static ArrayList<Record> records2 ;
 
@@ -37,77 +38,69 @@ public class MainActivity extends AppCompatActivity {
             /*Programamos */
             @Override
             public void onClick(View v) {
-
-                EditText et = findViewById(R.id.Num_Usuario);
-                String s = et.getText().toString();
-                int valor = Integer.parseInt(s);
-                if(valorAleatorio == valor){
-                    Context context = getApplicationContext();
-                    CharSequence text = "You Win ";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-
-                    intentos = intentos+intentos;
-
-                    final Dialog dialog = new Dialog(MainActivity.this);
-                    dialog.setContentView(R.layout.dialog);
-                    dialog.setTitle("Title");
-
-                    final Button button = dialog.findViewById(R.id.button_ok);
-                    button.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-
-                            EditText edit=dialog.findViewById(R.id.user_name);
-                            String text=edit.getText().toString();
-
-                            dialog.dismiss();
-                            name=text;
-
-                            Intent intent = new Intent(MainActivity.this, TablaRecords.class);
-                            EditText editText = dialog.findViewById(R.id.user_name);
-                            String message = editText.getText().toString();
-
-                            System.out.println("AAAAAAAAAAAAAA--> "+message);
+                    EditText et = findViewById(R.id.Num_Usuario);
+                    String s = et.getText().toString();
+                    int valor = Integer.parseInt(s);
 
 
+                    if(valorAleatorio == valor){
+                        Context context = getApplicationContext();
+                        CharSequence text = "You Win ";
+                        int duration = Toast.LENGTH_SHORT;
 
-                            Context context2 = getApplicationContext();
-                            CharSequence text2 = "NOMBRE "+message+" - "+"Intentos "+intentos;
-                            int duration2= Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
-                            Toast toast = Toast.makeText(context2, text2, duration2);
+                        intentos = intentos;
+
+                        //Iniciamos el Dialogo
+                        final Dialog dialog = new Dialog(MainActivity.this);
+                        dialog.setContentView(R.layout.dialog);
+                        dialog.setTitle("Title");
+
+                        final Button button = dialog.findViewById(R.id.button_ok);
+                        button.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+
+                                EditText edit=dialog.findViewById(R.id.user_name);
+                                String text=edit.getText().toString();
+
+                                dialog.dismiss();
+                                name=text;
+
+                                Intent intent = new Intent(MainActivity.this, TablaRecords.class);
+                                EditText editText = dialog.findViewById(R.id.user_name);
+                                String message = editText.getText().toString();
+
+                                records2.add(new Record(intentos,message));
+                                startActivity(intent);
+                            }
+                        });
+                        dialog.show();
+                    }else{
+                        if(valorAleatorio > valor){
+                            Context context = getApplicationContext();
+                            CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Grande ";
+                            int duration = Toast.LENGTH_SHORT;
+
+                            Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
 
-                            records2.add(new Record(intentos,message));
-                           // intent.putExtra("name", message);
-                            //intent.putExtra("intentos",intentos);
+                            EditText edit2=findViewById(R.id.Num_Usuario);
+                            edit2.setText("");
+                        }else {
+                            Context context = getApplicationContext();
+                            CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Pequeño";
+                            int duration = Toast.LENGTH_SHORT;
 
-                            startActivity(intent);
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
 
-
+                            EditText edit2=findViewById(R.id.Num_Usuario);
+                            edit2.setText("");
                         }
-                    });
-                    dialog.show();
-                }else{
-                    if(valorAleatorio > valor){
-                        Context context = getApplicationContext();
-                        CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Grande ";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
-                    }else {
-                        Context context = getApplicationContext();
-                        CharSequence text = "El valor es Incorrecto,El Numero que buscas es mas Pequeño";
-                        int duration = Toast.LENGTH_SHORT;
-
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        intentos++;
                     }
-                    intentos++;
-                }
             }
         });
 
