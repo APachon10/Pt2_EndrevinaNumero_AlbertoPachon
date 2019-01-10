@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected int valorAleatorio;
     protected int intentos;
     protected String name;
-    protected boolean salir=false;
 
     public static ArrayList<Record> records2 ;
 
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
                     EditText et = findViewById(R.id.Num_Usuario);
                     String s = et.getText().toString();
                     int valor = Integer.parseInt(s);
-
 
                     if(valorAleatorio == valor){
                         Context context = getApplicationContext();
@@ -101,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                         intentos++;
                     }
+
             }
         });
-
         final Button record = findViewById(R.id.Records);
         record.setOnClickListener(new View.OnClickListener() {
             @Override

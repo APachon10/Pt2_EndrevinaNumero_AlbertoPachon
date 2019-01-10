@@ -1,16 +1,11 @@
 package com.example.tnb_20.endrevinanumero;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 public class TablaRecords extends AppCompatActivity {
 
@@ -24,7 +19,7 @@ public class TablaRecords extends AppCompatActivity {
 
         TextView lv = (TextView) findViewById(R.id.tabla);
         for (int i=0;i<MainActivity.records2.size();i++){
-            lv.setText(lv.getText()+MainActivity.records2.get(i).name + "-" +MainActivity.records2.get(i).intentos+"\n");
+            lv.setText(MainActivity.records2.get(i).name+"                                                         "+MainActivity.records2.get(i).intentos);
         }
     }
     public void onBackPressed() {
