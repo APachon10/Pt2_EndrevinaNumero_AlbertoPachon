@@ -19,7 +19,8 @@ public class TablaRecords extends AppCompatActivity {
 
         TextView lv = (TextView) findViewById(R.id.tabla);
         for (int i=0;i<MainActivity.records2.size();i++){
-            lv.setText(MainActivity.records2.get(i).name+"                                                         "+MainActivity.records2.get(i).intentos);
+
+            lv.setText(MainActivity.records2.get(i).name+"                                                         "+MainActivity.records2.get(i).intentos + "\n");
         }
     }
     public void onBackPressed() {
