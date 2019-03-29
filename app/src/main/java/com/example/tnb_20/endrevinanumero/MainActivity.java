@@ -18,13 +18,12 @@ public class MainActivity extends AppCompatActivity {
     protected int intentos;
     protected String name;
 
-    public static ArrayList<Record> records2 ;
+    public static ArrayList<Record> records2 = new ArrayList<Record>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        records2 = new ArrayList<Record>();
         intentos = 0;
         /*Generamos Numero Aleatorio */
         Random r = new Random();
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                     EditText et = findViewById(R.id.Num_Usuario);
                     String s = et.getText().toString();
                     int valor = Integer.parseInt(s);
-
                     if(valorAleatorio == valor){
                         Context context = getApplicationContext();
                         CharSequence text = "You Win ";
@@ -68,8 +66,11 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, TablaRecords.class);
                                 EditText editText = dialog.findViewById(R.id.user_name);
                                 String message = editText.getText().toString();
-
-                                records2.add(new Record(intentos,message));
+                                if (records2.size()<=0) {
+                                    records2.add(new Record(intentos, message));
+                                }else if(records2.size()>0){
+                                    records2.add(new Record(intentos, message));
+                                }
                                 startActivity(intent);
                             }
                         });
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         intentos++;
                     }
-
             }
         });
         final Button record = findViewById(R.id.Records);

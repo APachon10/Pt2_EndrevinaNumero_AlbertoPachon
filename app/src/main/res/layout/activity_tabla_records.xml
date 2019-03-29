@@ -30,10 +30,9 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tabla"
+    <ListView
+        android:id="@+id/Lista"
         android:layout_width="match_parent"
-        android:layout_height="61dp"
-        android:text="TextView" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
