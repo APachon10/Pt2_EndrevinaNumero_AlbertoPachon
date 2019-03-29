@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         intentos = 0;
+        //Abrimos el Archivo
+        try{
+            BufferedReader archivo = new BufferedReader(new InputStreamReader(openFileInput("App_Records.txt")));
+            String line = null;
+                do {
+                    records2.add(new Record(Integer.parseInt(line.split(" - ")[0]), line.split(" - ")[1]));
+                }while((line = archivo.readLine())!=null);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         /*Generamos Numero Aleatorio */
         Random r = new Random();
         valorAleatorio = r.nextInt(100);
@@ -68,8 +83,28 @@ public class MainActivity extends AppCompatActivity {
                                 String message = editText.getText().toString();
                                 if (records2.size()<=0) {
                                     records2.add(new Record(intentos, message));
+                                    try {
+                                        FileWriter fichero = new FileWriter("App_Records.txt", true);
+                                        for (int i=0; i<records2.size(); i++){
+                                            fichero.write(records2.get(i).name +"              "+records2.get(i).intentos +"\n");
+                                        }
+                                        fichero.close();
+
+                                    } catch (Exception  e) {
+                                        e.printStackTrace();
+                                    }
                                 }else if(records2.size()>0){
                                     records2.add(new Record(intentos, message));
+                                    try {
+                                        FileWriter fichero = new FileWriter("App_Records.txt", true);
+                                        for (int i=0; i<records2.size(); i++){
+                                            fichero.write(records2.get(i).name+"              "+records2.get(i).intentos +"\n");
+                                        }
+                                        fichero.close();
+
+                                    } catch (Exception  e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                                 startActivity(intent);
                             }

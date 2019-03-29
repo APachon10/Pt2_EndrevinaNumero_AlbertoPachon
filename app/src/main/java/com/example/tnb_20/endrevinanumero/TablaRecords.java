@@ -30,6 +30,7 @@ public class TablaRecords extends AppCompatActivity {
                 }
                 ((TextView) convertView.findViewById(R.id.User)).setText(getItem(indice).name);
                 ((TextView) convertView.findViewById(R.id.Rec)).setText(Integer.toString(getItem(indice).intentos));
+
                 return convertView;
             }
         };
