@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         final Button button = dialog.findViewById(R.id.button_ok);
                         button.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
+                                //Insetamos el Nombre del Usuario
                                 EditText edit = dialog.findViewById(R.id.user_name);
                                 String text = edit.getText().toString();
 
@@ -71,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
                                 EditText editText = dialog.findViewById(R.id.user_name);
                                 String message = editText.getText().toString();
                                 if (records2.size() <= 0) {
+                                    //Añadimos los Datos nuevos al ArrayList
                                     records2.add(new Record(intentos, message));
+                                    // Pasamos lso Datos al metodo para insertarlo dentro de un fichero que le indicamos
                                     guardarFichero(message, intentos, nombre_fichero);
                                 } else if (records2.size() > 0) {
                                     records2.add(new Record(intentos, message));
