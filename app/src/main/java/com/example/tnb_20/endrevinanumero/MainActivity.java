@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected int intentos;
     protected String name;
 
-    public static ArrayList<Record> records2 = new ArrayList<Record>();
+    static ArrayList<Record> records2 = new ArrayList<Record>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         final String nombre_fichero = "App_Records_Persistence.txt";
         //Abrimos el Archivo
         records2 = leerFichero(nombre_fichero);
-
         /*Generamos Numero Aleatorio */
         Random r = new Random();
         generarNumeroAleatorio(r);
@@ -142,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
     public void guardarFichero(String nombre, int Intentos,String nombre_file){
         try {
             OutputStreamWriter fichero = new OutputStreamWriter(openFileOutput(nombre_file,Context.MODE_APPEND));
-            fichero.write(nombre +" "+intentos);
+
+            fichero.write(nombre +","+intentos);
             fichero.write("\r\n");
             fichero.close();
         } catch (Exception  e) {
@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
             String linea;
             String texto [];
             while((linea = br.readLine())!=null){
-                texto = linea.split(" ");
-                Record r = new Record(Integer.parseInt(texto[0]),texto[1]);
+                texto = linea.split(",");
+                Record r = new Record(Integer.parseInt(texto[1]),texto[0]);
                 records2.add(r);
             }
             br.close();

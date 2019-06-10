@@ -8,6 +8,4 @@ public class Record {
         this.intentos = _intents;
         this.name= _nom;
     }
-
-
 }
