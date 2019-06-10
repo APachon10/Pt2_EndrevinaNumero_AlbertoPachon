@@ -20,7 +20,7 @@ public class TablaRecords extends AppCompatActivity {
         setContentView(R.layout.activity_tabla_records);
         int indice =0;
         ListView lv = (ListView) findViewById(R.id.Lista);
-        ArrayAdapter<Record> Adaptador = new ArrayAdapter<Record>(this, R.layout.activity_tabla_records, MainActivity.records2){
+        ArrayAdapter<Record> Adaptador = new ArrayAdapter<Record>(this, R.layout.item_layout, MainActivity.records2){
             @Override
             public View getView(int indice, View convertView, ViewGroup container)
             {
