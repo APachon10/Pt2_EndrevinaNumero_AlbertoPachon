@@ -18,9 +18,8 @@ public class TablaRecords extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_records);
-
+        int indice =0;
         ListView lv = (ListView) findViewById(R.id.Lista);
-        lv.setAdapter("");
         ArrayAdapter<Record> Adaptador = new ArrayAdapter<Record>(this, R.layout.activity_tabla_records, MainActivity.records2){
             @Override
             public View getView(int indice, View convertView, ViewGroup container)

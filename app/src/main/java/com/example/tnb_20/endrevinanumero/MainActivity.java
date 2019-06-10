@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         intentos = 0;
         //Definimos el nombre del Fichero
         final String nombre_fichero = "App_Records_Persistence.txt";
+        records2.clear();
         //Abrimos el Archivo
         records2 = leerFichero(nombre_fichero);
         /*Generamos Numero Aleatorio */
